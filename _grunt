@@ -1,0 +1,17 @@
+#compdef grunt
+#autoload
+
+
+_1st_arguments=( `grunt --help  2>/dev/null |grep "Available tasks" -A 100 |grep "  " |grep -v ".*--" | awk -F" " '{ print $1 }'  `)
+
+
+_arguments \
+  '(--version)--version[version]' \
+  '(--help)--help[help]' \
+  '*:: :->subcmds' && return 0
+
+if (( CURRENT == 1 )); then
+  _describe -t commands "grunt subcommand" _1st_arguments
+  return
+fi
+

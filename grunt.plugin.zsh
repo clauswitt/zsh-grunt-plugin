@@ -1,0 +1,1 @@
+alias grunts='grunt --list'
